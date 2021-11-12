@@ -1,12 +1,15 @@
 public class Ejercicio16_Main {
     public static void main(String[] args) {
 
-        for (int i = 1; i<1000000; i++) {
-            new Ejercicio16_Hilo(i);
-        }
-
-        /*Runtime runtime = Runtime.getRuntime();
+        Runtime runtime = Runtime.getRuntime();
         int numCores = runtime.availableProcessors();
-        System.out.println(numCores);*/
+        int min = 1;
+        int max = 0;
+
+        for (int i = 1; i<=numCores; i++) {
+            max = min + (1000000/numCores);
+            new Ejercicio16_Hilo(min, max, String.valueOf(i));
+            min = max;
+        }
     }
 }

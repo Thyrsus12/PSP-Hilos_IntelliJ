@@ -5,6 +5,12 @@ public class Ejercicio15_Hilo implements Runnable{
     public Ejercicio15_Hilo() {
         t = new Thread(this);
         t.start();
+
+        try {
+            t.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -16,7 +22,8 @@ public class Ejercicio15_Hilo implements Runnable{
         long inicio = System.currentTimeMillis();
         ordenar(array);
         long fin = System.currentTimeMillis();
-        System.out.println((fin - inicio)/1000 + " segundos en ordenar el array del hilo" + t.getName());
+        System.out.println((fin - inicio)/1000 + " segundos en ordenar el array del hilo: " + t.getName());
+        mostrar(array);
     }
 
     public static void llenar(int[] array) {
@@ -35,5 +42,12 @@ public class Ejercicio15_Hilo implements Runnable{
                 j--;
             }
         }
+    }
+
+    public static void mostrar(int[] array) {
+        for (int i = 0; i<array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.print("\n");
     }
 }

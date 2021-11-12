@@ -1,19 +1,18 @@
 public class Ejercicio13_Hilo implements Runnable {
-    String Nalumno;
+    String nAlumno;
     Thread t;
-    public Ejercicio13_Hilo (String Nalumno) {
-        this.Nalumno = Nalumno;
+    public Ejercicio13_Hilo (String nAlumno) {
+        this.nAlumno = nAlumno;
         t = new Thread(this);
         t.start();
     }
 
     public void run() {
         int media = 0;
-        String[] Aalumno= Nalumno.split(" ");
-        System.out.print("La media del alumno " + Aalumno[0] + " es: ");
-        for (int i=1; i < Aalumno.length; i++ ){
-            media+=Integer.parseInt(Aalumno[i]);
+        String[] aAlumno= nAlumno.split(" ");
+        for (int i=1; i < aAlumno.length; i++ ){
+            media+=Integer.parseInt(aAlumno[i]);
         }
-        System.out.println(media/(Aalumno.length-1));
+        System.out.println("La media del alumno " + aAlumno[0] + " es: "+ media/(aAlumno.length-1));
     }
 }
